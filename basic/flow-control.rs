@@ -12,7 +12,7 @@
 
 fn main() {
     let msg = 5;
-    if msg >5 {
+    if msg > 5 {
         println!("Message is greater than 5");
     } else if msg < 5 {
         println!("Message is less than 5");
@@ -48,17 +48,15 @@ fn main() {
     let is_testing = false;
     match is_testing {
         true => println!("Is Testing"),
-        false => println!("Not Testing")
-
+        false => println!("Not Testing"),
     }
 
-    let num:i32 = 1;
+    let num: i32 = 1;
     match num {
         1 => println!("One"),
         2 => println!("Two"),
         3 => println!("Three"),
         4 => println!("Four"),
-        _ => println!("Something else")
+        _ => println!("Something else"),
     }
 }
-

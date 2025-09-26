@@ -12,7 +12,7 @@
 
 enum Flavors {
     Sparkling,
-    Sweets
+    Sweets,
 }
 
 struct Drinks {
@@ -21,7 +21,6 @@ struct Drinks {
 }
 
 fn show_flavor(drinks: Drinks) {
-
     match drinks.flavor {
         Flavors::Sparkling => println!("Coke"),
         Flavors::Sweets => println!("Juice"),
@@ -30,7 +29,6 @@ fn show_flavor(drinks: Drinks) {
     println!("ounce: {}", drinks.ounce);
 }
 
-
 fn main() {
     let dr = Drinks {
         flavor: Flavors::Sparkling,
@@ -38,4 +36,3 @@ fn main() {
     };
     show_flavor(dr);
 }
-

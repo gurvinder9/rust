@@ -36,7 +36,7 @@ EXAMPLE BELOW demonstrates ownership transfer (move):
 
 enum Light {
     Bright,
-    Soft
+    Soft,
 }
 
 struct Book {
@@ -45,7 +45,10 @@ struct Book {
 }
 
 fn display_book(book: Book) {
-    println!("Book Name is {:?} and it rating is {:?}", book.name, book.rating);
+    println!(
+        "Book Name is {:?} and it rating is {:?}",
+        book.name, book.rating
+    );
 }
 
 // This function takes OWNERSHIP of the Light value
@@ -53,7 +56,7 @@ fn display_book(book: Book) {
 fn display_right(light: Light) {
     match light {
         Light::Bright => println!("bright"),
-        Light::Soft => println!("soft")
+        Light::Soft => println!("soft"),
     }
     // 'light' is dropped here when function ends
 }
@@ -63,11 +66,10 @@ fn display_right(light: Light) {
 fn display_light_borrowed(light: &Light) {
     match light {
         Light::Bright => println!("bright (borrowed)"),
-        Light::Soft => println!("soft (borrowed)")
+        Light::Soft => println!("soft (borrowed)"),
     }
     // No ownership, so nothing is dropped
 }
-
 
 struct GroceryItem {
     price: f32,
@@ -75,11 +77,14 @@ struct GroceryItem {
 }
 
 enum Name {
-    DisplayName(String)
+    DisplayName(String),
 }
 
 fn display_price(item: &GroceryItem) {
-    println!("price is {} and quantity is {:?}", item.price, item.quantity);
+    println!(
+        "price is {} and quantity is {:?}",
+        item.price, item.quantity
+    );
 }
 
 fn display_quantity(item: &GroceryItem) {
@@ -97,30 +102,30 @@ fn main() {
     display_quantity(&item);
     // display_quantity(item);
 
-        // OWNERSHIP EXAMPLE:
-        let light = Light::Bright;          // light owns the Light::Bright value
-    
-        display_right(light);               // Ownership MOVED to display_right function
-        // display_right(light);            // ❌ COMPILE ERROR! light no longer valid
-        
-        // BORROWING EXAMPLE:
-        let light2 = Light::Soft;           // light2 owns the Light::Soft value
-        display_light_borrowed(&light2);    // Borrow light2 (ownership stays with light2)
-        display_light_borrowed(&light2);    // ✅ Works! light2 still valid
-        
-        println!("light2 is still accessible here!");
-        
-        /*
-        KEY TAKEAWAYS:
-        - Move semantics prevent use-after-free and double-free errors
-        - Borrowing allows multiple readers OR one writer (never both simultaneously)
-        - Compiler enforces these rules at compile time, preventing runtime crashes
-        - No garbage collector needed - memory is freed deterministically
-        */
-    
-        let book = Book {
-            name: "Java Programming Language",
-            rating: 1.0,
-        };
-        display_book(book);
+    // OWNERSHIP EXAMPLE:
+    let light = Light::Bright; // light owns the Light::Bright value
+
+    display_right(light); // Ownership MOVED to display_right function
+                          // display_right(light);            // ❌ COMPILE ERROR! light no longer valid
+
+    // BORROWING EXAMPLE:
+    let light2 = Light::Soft; // light2 owns the Light::Soft value
+    display_light_borrowed(&light2); // Borrow light2 (ownership stays with light2)
+    display_light_borrowed(&light2); // ✅ Works! light2 still valid
+
+    println!("light2 is still accessible here!");
+
+    /*
+    KEY TAKEAWAYS:
+    - Move semantics prevent use-after-free and double-free errors
+    - Borrowing allows multiple readers OR one writer (never both simultaneously)
+    - Compiler enforces these rules at compile time, preventing runtime crashes
+    - No garbage collector needed - memory is freed deterministically
+    */
+
+    let book = Book {
+        name: "Java Programming Language",
+        rating: 1.0,
+    };
+    display_book(book);
 }

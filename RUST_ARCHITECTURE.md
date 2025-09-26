@@ -135,10 +135,10 @@ __ZN2a23add17h...:                    // add function
     sub sp, sp, #32                   // Allocate stack space
     stp x29, x30, [sp, #16]          // Save frame pointer and link register
     add x29, sp, #16                  // Set up frame pointer
-    
+
     adds w0, w0, w1                   // Add with overflow check
     b.vs LBB0_1                       // Branch if overflow
-    
+
     ldp x29, x30, [sp, #16]          // Restore registers
     add sp, sp, #32                   // Deallocate stack
     ret                               // Return to caller
@@ -278,7 +278,7 @@ cargo rustc --bin a2 -- --emit=asm,llvm-ir,mir
 
 # Generated files:
 # a2-{hash}.mir  ← Mid-level IR
-# a2-{hash}.ll   ← LLVM IR  
+# a2-{hash}.ll   ← LLVM IR
 # a2-{hash}.s    ← Assembly
 ```
 
@@ -359,7 +359,7 @@ time cargo run --bin a2
 
 1. **Binary Load**: OS loads executable into memory at specific address
 2. **Runtime Setup**: Rust runtime initializes, sets up stack
-3. **main() Entry**: 
+3. **main() Entry**:
    - Stack frame created
    - `age = 15` stored as 4-byte i32 on stack
 4. **Condition Evaluation**:
@@ -385,7 +385,7 @@ Address Space Layout for a2:
 ├─────────────────┤ ← heap grows up
 │      Heap       │   (unused in a2.rs)
 │       ↑         │
-├─────────────────┤ ← 0x100... 
+├─────────────────┤ ← 0x100...
 │   Data Segment  │   "Sorry, you don't..." strings
 ├─────────────────┤
 │   Text Segment  │   add() machine code
@@ -396,7 +396,7 @@ Address Space Layout for a2:
 ## Key Takeaways for Beginners
 
 1. **Rust compiles to native machine code** - no interpreter or VM
-2. **Ownership system eliminates entire classes of bugs** at compile time  
+2. **Ownership system eliminates entire classes of bugs** at compile time
 3. **Multiple compilation stages** each add safety and optimization
 4. **Zero runtime overhead** for memory safety features
 5. **Deterministic performance** - no unexpected GC pauses

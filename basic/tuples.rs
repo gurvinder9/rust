@@ -10,29 +10,26 @@
 // * Destructure the return value into two variables
 // * Use an if..else if..else block to determine what to print
 
-
 fn print_coords() -> (i32, i32) {
-    let coords = (4,5);
+    let coords = (4, 5);
     let (x, y) = coords;
     if y > 5 {
-        (x,y)
+        (x, y)
     } else if y < 5 {
-        (x,y + 1)
+        (x, y + 1)
     } else {
-        (x,y + 2)
+        (x, y + 2)
     }
 }
 
 fn main() {
     let (x, y) = print_coords();
     println!("x: {}, y: {}", x, y);
-    let coord = (1,2);
-    let (x,y) = coord;
+    let coord = (1, 2);
+    let (x, y) = coord;
     println!("{:?}", coord);
     println!("{:?}", coord.0);
     println!("{:?}", coord.1);
     println!("{:?}", x);
     println!("{:?}", y);
-
 }
-

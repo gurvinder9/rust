@@ -11,9 +11,8 @@
 // * Implement functionality on the box struct to create a new box
 // * Implement functionality on the box struct to print the characteristics
 
-
 // RUST CONCEPTS EXPLAINED:
-// 
+//
 // impl: Implementation block - used to define methods and associated functions for any type
 //       Can be used with structs, enums, traits, and even primitive types
 //       Format: impl TypeName { ... } or impl TraitName for TypeName { ... }
@@ -30,8 +29,6 @@ struct Temperature {
     celsius: f32,
 }
 
-
-
 // impl: Implementation block - defines methods and associated functions for the Temperature struct
 impl Temperature {
     // Associated function (like a static method) - called on the type itself, not an instance
@@ -39,19 +36,18 @@ impl Temperature {
     fn freezing() -> Self {
         Self { celsius: 20.0 } // Self is shorthand for Temperature here
     }
-    
+
     // Instance method - takes &self (immutable reference to the instance)
     // &self: Borrowed reference to the current instance, allows reading data without taking ownership
     fn celsius_to_fahrenheit(&self) -> f32 {
         self.celsius * 9.0 / 5.0 + 32.0 // self refers to the current Temperature instance
     }
-    
+
     // Another instance method using &self
     fn display_temp(&self) {
         println!("{:?}", self.celsius); // Access the celsius field of this instance
     }
 }
-
 
 enum BoxColor {
     Red,
@@ -97,9 +93,8 @@ fn main() {
     shipping.print();
     let t1 = Temperature { celsius: 32.0 };
     t1.display_temp();
-    println!("Converting to fahrenheit {:?}",   t1.celsius_to_fahrenheit());
+    println!("Converting to fahrenheit {:?}", t1.celsius_to_fahrenheit());
 
     let cold = Temperature::freezing();
     cold.display_temp();
 }
-
