@@ -39,4 +39,3 @@ fn main() {
         count -= 1;
     }
 }
-

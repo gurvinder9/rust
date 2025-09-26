@@ -13,7 +13,6 @@
 // * Use a match expression to determine which message
 //   to print
 
-
 fn print_msg(msg: &str) {
     match msg {
         ">100" => println!(">100"),
@@ -27,4 +26,3 @@ fn main() {
     let confirmed = if num > 100 { ">100" } else { "<100" };
     print_msg(confirmed);
 }
-

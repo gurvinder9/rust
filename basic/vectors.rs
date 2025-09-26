@@ -16,27 +16,20 @@ struct Test {
 }
 
 fn main() {
-    let my_vec = vec![10,20,30, 40];
+    let my_vec = vec![10, 20, 30, 40];
 
     println!("Total Elem {:?}", my_vec.len());
 
     for v in my_vec {
-        if(v == 30) {
+        if (v == 30) {
             println!("{:?}", "Thirty")
         } else {
             println!("Num is {:?}", v);
         }
     }
 
-    let my_score:Vec<Test> = vec![
-        Test {
-            score: 200
-        },
-        Test {
-            score: 100
-        }
-    ];
-    let item_list:Vec<i32> = vec![1,2,3,4,5,6,7];
+    let my_score: Vec<Test> = vec![Test { score: 200 }, Test { score: 100 }];
+    let item_list: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7];
     println!("{:?}", item_list);
 
     // let mut groceries = Vec::new();
@@ -44,7 +37,6 @@ fn main() {
     // groceries.push(5);
     //
     // println!("Groceries List {:?}", groceries);
-
 
     for item in item_list {
         println!("{}", item);
@@ -54,4 +46,3 @@ fn main() {
         println!("Score is {:?}", score.score)
     }
 }
-

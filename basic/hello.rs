@@ -16,7 +16,7 @@ fn main() {
     let multiplier = 5 * 5;
     let remainder = sum % subtract;
 
-    fn add(a:i32, b:i32) -> i32 {
+    fn add(a: i32, b: i32) -> i32 {
         a + b
     }
 
@@ -25,4 +25,3 @@ fn main() {
     }
     println!("My name is {}", display_name())
 }
-

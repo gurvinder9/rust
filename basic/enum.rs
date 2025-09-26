@@ -13,7 +13,7 @@
 
 enum Color {
     Red,
-    White
+    White,
 }
 
 fn print_color(color: Color) {
@@ -22,7 +22,6 @@ fn print_color(color: Color) {
         Color::White => println!("white"),
     }
 }
-
 
 enum Direction {
     UP,
@@ -40,7 +39,6 @@ fn route(go: Direction) {
     }
 }
 
-
 fn main() {
     print_color(Color::Red);
     print_color(Color::White);
@@ -49,4 +47,3 @@ fn main() {
     route(Direction::LEFT);
     route(Direction::RIGHT);
 }
-

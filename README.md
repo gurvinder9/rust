@@ -36,6 +36,23 @@ rustc hello.rs
 - `cargo test` - Run tests
 - `cargo doc --open` - Generate and open documentation
 
+### Pre-commit Hooks 🚀
+This project includes pre-commit hooks that automatically:
+- Format your code with `rustfmt`
+- Lint your code with `clippy`
+- Check compilation before commits
+- Fix common formatting issues
+
+```bash
+# Run hooks manually
+pre-commit run --all-files
+
+# Hooks run automatically on every commit
+git commit -m "your message"
+```
+
+See `PRE_COMMIT_GUIDE.md` for detailed information.
+
 ## Resources for Learning Rust
 
 - [The Rust Programming Language Book](https://doc.rust-lang.org/book/)

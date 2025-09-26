@@ -15,7 +15,7 @@
 enum Tickets {
     Backstage(String, f64),
     Vip(String, f64),
-    Standard
+    Standard,
 }
 
 enum Discount {
@@ -28,12 +28,11 @@ struct Ticket {
     price: i32,
 }
 
-
 fn main() {
     let ticket = vec![
         Tickets::Backstage("James".to_owned(), 10.00),
         Tickets::Vip("James".to_owned(), 100.00),
-        Tickets::Standard
+        Tickets::Standard,
     ];
 
     let n = Discount::Flat(3);
@@ -41,25 +40,25 @@ fn main() {
     match n {
         Discount::Flat(3) => println!("Discount is three"),
         Discount::Flat(amount) => println!("Discount is {}", amount),
-        _ => ()
+        _ => (),
     }
 
     let ticket1 = Ticket {
         event: "Concert".to_owned(),
-        price: 30
+        price: 30,
     };
 
     match ticket1 {
-        Ticket {price:20, ..} => println!("Price is $20"),
-        Ticket {price, ..} => println!("Price is {}", price),
+        Ticket { price: 20, .. } => println!("Price is $20"),
+        Ticket { price, .. } => println!("Price is {}", price),
         // Ticket {price, event} => println!("Price is {} for event {}", price, event);
     }
 
-    for t in ticket{
+    for t in ticket {
         match t {
             Tickets::Backstage(name, price) => println!("Name is {} and price is ${}", name, price),
             Tickets::Vip(name, price) => println!("Vip Name is {} and price is ${}", name, price),
-            other => ()
+            other => (),
         }
     }
 }

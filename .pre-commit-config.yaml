@@ -1,0 +1,63 @@
+# Pre-commit configuration for Rust learning project
+# See https://pre-commit.com for more information
+repos:
+  # General code quality hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  # Rust-specific hooks
+  - repo: local
+    hooks:
+      # Format Rust code with rustfmt
+      - id: rustfmt
+        name: rustfmt
+        description: Format Rust code
+        entry: rustfmt
+        language: system
+        files: \.rs$
+        args: [--edition=2021]
+
+      # Lint Rust code with clippy
+      - id: clippy
+        name: clippy
+        description: Lint Rust code
+        entry: bash
+        language: system
+        files: \.rs$
+        args:
+          - -c
+          - |
+            # For individual files in basic/ directory
+            if [[ "$1" == *"/basic/"* ]]; then
+              rustc --edition=2021 -W clippy::all "$1" --crate-type bin -o /tmp/clippy_check_$$ > /dev/null 2>&1
+              rm -f /tmp/clippy_check_$$
+            else
+              # For cargo project files
+              cargo clippy --all-targets --all-features -- -D warnings
+            fi
+
+      # Check Rust code compiles
+      - id: rust-check
+        name: rust-check
+        description: Check Rust code compiles
+        entry: bash
+        language: system
+        files: \.rs$
+        args:
+          - -c
+          - |
+            # For individual files in basic/ directory
+            if [[ "$1" == *"/basic/"* ]]; then
+              rustc --edition=2021 "$1" --crate-type bin -o /tmp/rust_check_$$ > /dev/null
+              rm -f /tmp/rust_check_$$
+            else
+              # For cargo project files
+              cargo check
+            fi

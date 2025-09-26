@@ -23,19 +23,19 @@
 
 struct GroceryItem {
     name: String,
-    quantity: i32
+    quantity: i32,
 }
 
 fn display_item(name: &str) -> Option<i32> {
     let item = vec![
         GroceryItem {
             name: "Apple".to_owned(),
-            quantity: 10
+            quantity: 10,
         },
         GroceryItem {
             name: String::from("Orange"),
-            quantity: 15
-        }
+            quantity: 15,
+        },
     ];
 
     for t in item {
@@ -45,25 +45,24 @@ fn display_item(name: &str) -> Option<i32> {
     }
 
     None
-
 }
 
 /// This three slash comment is called as a documentation comment. cargo doc will generate the documentation of your code.
 struct LockerAssignment {
     name: String,
-    assigment: Option<i32>
+    assigment: Option<i32>,
 }
 
 fn main() {
     let locker = LockerAssignment {
         name: String::from("John"),
-        assigment: Some(10)
+        assigment: Some(10),
     };
 
     match locker.assigment {
         Some(num) => println!("Locker Assign is {:?}", num),
         None => (),
-        _ => ()
+        _ => (),
     }
 
     let item = display_item("Apple");

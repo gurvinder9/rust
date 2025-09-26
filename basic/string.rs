@@ -38,15 +38,15 @@
  * }
  */
 
- struct LineItem {
+struct LineItem {
     name: String,
-    count: i32
+    count: i32,
 }
 
 struct People {
     color: String,
     name: String,
-    age: i32
+    age: i32,
 }
 
 fn print_name(n: &str) {
@@ -66,41 +66,40 @@ fn print_receipt(name: &str) {
 }
 
 // fn print(name: String) {
-    println!("Printing thought string owned approach {:?}", name);
-}
+//     println!("Printing thought string owned approach {:?}", name);
+// }
 
 fn main() {
     let receipt = vec![
         LineItem {
             name: "Hello".to_owned(),
-            count: 10
+            count: 10,
         },
         LineItem {
             name: String::from("Hello through from"),
-            count: 5
-        }
+            count: 5,
+        },
     ];
 
     let people = vec![
         People {
             color: "Red".to_owned(),
-            name:"John".to_owned(),
-            age: 10
+            name: "John".to_owned(),
+            age: 10,
         },
         People {
             color: "White".to_owned(),
             name: String::from("Sam"),
-            age: 12
+            age: 12,
         },
         People {
             color: "Blue".to_owned(),
-            name:"Rita".to_owned(),
-            age: 15
-        }
+            name: "Rita".to_owned(),
+            age: 15,
+        },
     ];
 
     for p in people {
-
         if p.age <= 10 {
             print_name(&p.name);
             print_color(&p.color);
