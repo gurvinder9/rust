@@ -21,6 +21,18 @@ cargo build
 ```
 
 ### Running basic examples
+
+#### Method 1: Using the helper script (Recommended) 🚀
+```bash
+# From project root - shows available files
+./run_basic.sh
+
+# Run a specific file
+./run_basic.sh hello.rs
+./run_basic.sh tuples.rs
+```
+
+#### Method 2: Manual compilation
 ```bash
 # Navigate to basic directory
 cd basic
@@ -28,6 +40,14 @@ cd basic
 # Compile and run a basic example
 rustc hello.rs
 ./hello
+
+# Clean up the executable
+rm hello
+```
+
+#### Method 3: One-liner from project root
+```bash
+rustc basic/hello.rs -o basic/hello && basic/hello && rm basic/hello
 ```
 
 ### Useful Cargo commands
